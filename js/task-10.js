@@ -15,12 +15,12 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-const arr = [];
 
+let arr = [];
 let boxSize = 30;
 
 const createBoxes = (amount) => {
-  for (let i = 0; i < amount.length; i++) {
+  for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
     box.style.width = `${boxSize}px`;
     box.style.height = `${boxSize}px`;
@@ -31,19 +31,31 @@ const createBoxes = (amount) => {
   return arr;
 };
 
-const pushBoxesCollection = () => {
-  createBoxes(input.value);
+// const pushBoxesCollection = () => {
+//   createBoxes(input.value);
+//   boxes.append(...arr);
+//   input.value = 0;
+// };
+
+// const destroyBoxes = () => {
+//   boxes.innerHTML = "";
+//   input.value = 0;
+//   arr = [];
+//   console.log(arr);
+// };
+
+creatBtn.addEventListener("click", (event) => {
+  let newBox = createBoxes(input.value);
   boxes.append(...arr);
   input.value = 0;
-};
+  arr = [];
+});
 
 const destroyBoxes = () => {
   boxes.innerHTML = "";
   input.value = 0;
+  arr = [];
 };
-
-const log = () => {
-  console.log("asdf");
-};
-creatBtn.addEventListener("click", pushBoxesCollection);
-destroyBtn.addEventListener("click", destroyBoxes);
+destroyBtn.addEventListener("click", (event) => {
+  destroyBoxes.call();
+});
