@@ -46,7 +46,7 @@ const createBoxes = (amount) => {
 
 creatBtn.addEventListener("click", (event) => {
   let newBox = createBoxes(input.value);
-  boxes.append(...arr);
+  boxes.append(...newBox);
   input.value = 0;
   arr = [];
 });
